@@ -55,17 +55,30 @@ def check_todo(check):
     check_number = int(check)
     file_name = 'todo_list.txt'
     lines = lines_from_file(file_name)
-    line = lines[check_number - 1].split(' ')
-    line.pop(0)
-    line[0] = '[X]'
-    lines[check_number - 1] = ' '.join(line)
-    lines_to_file(file_name, lines)
+    if check_number <= len(lines) and check_number > 0:
+        line = lines[check_number - 1].split(' ')
+        if line[0].upper() != '[X]':
+            line.pop(0)
+            line[0] = '[X]'
+
+        else:
+            line[0] = '[ ]'
+        lines[check_number - 1] = ' '.join(line)
+        lines_to_file(file_name, lines)        
+    else:
+        print('Unable to check: index is out of bound')
+        print_usage()    
 
 def remove_todo(number):
     number = int(number)
     file_name = 'todo_list.txt'
     lines = lines_from_file(file_name)
-    lines.pop(number - 1)
-    lines_to_file(file_name, lines)
+    if number <= len(lines) and number > 0:
+        lines.pop(number - 1)
+        lines_to_file(file_name, lines)       
+    else:
+        print('Unable to remove: index is out of bound')
+        print_usage()
+ 
 
         

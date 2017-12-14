@@ -1,2 +1,4 @@
 [ ] Walk the dog
-[X] By
+
+[ ] By milk
+[ ] Do homework
