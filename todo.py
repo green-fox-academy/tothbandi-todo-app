@@ -1,24 +1,35 @@
 import sys
 import model
 
-class Todo(object):
-    
-    def __init__(self):
-        self.inputs = sys.argv
-    
-    def cl_input(self):
-        number_of_args = len(self.inputs)
-        if number_of_args == 1:
+def arguments_validator():
+    if len(sys.argv) == 1:
+        return True
+    elif len(sys.argv) == 2:
+        if sys.argv[1] == '-l':
+            return True
+    elif len(sys.argv) == 3:
+        if sys.argv[1] == '-a':
+            return True
+        elif sys.argv[1] == '-c' or sys.argv[1] == '-r':
+            if sys.argv[2].isdigit():
+                return True
+    return False
+
+def cl_input():
+    if arguments_validator():
+        if len(sys.argv) == 1:
             model.print_usage()
         else:
-            if self.inputs[1] == '-l':
+            if sys.argv[1] == '-l':
                 model.print_todo_list()
-            elif self.inputs[1] == '-a':
-                model.add_todo(self.inputs[2])
-            elif self.inputs[1] == '-c':
-                model.check_todo(self.inputs[2])            
-            elif self.inputs[1] == '-r':
-                model.remove_todo(self.inputs[2]) 
-
-my_todo = Todo()
-my_todo.cl_input()
+            elif sys.argv[1] == '-a':
+                model.add_todo(sys.argv[2])
+            elif sys.argv[1] == '-c':
+                model.check_todo(sys.argv[2])            
+            elif sys.argv[1] == '-r':
+                model.remove_todo(sys.argv[2])
+    else:
+        print('Unsupported argument\n')
+        model.print_usage()
+        
+cl_input()
