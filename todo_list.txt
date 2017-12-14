@@ -1,4 +1,3 @@
 [ ] Walk the dog
-
 [ ] By milk
 [ ] Do homework

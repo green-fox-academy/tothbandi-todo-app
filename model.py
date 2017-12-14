@@ -60,7 +60,6 @@ def check_todo(check):
         if line[0].upper() != '[X]':
             line.pop(0)
             line[0] = '[X]'
-
         else:
             line[0] = '[ ]'
         lines[check_number - 1] = ' '.join(line)
@@ -75,6 +74,8 @@ def remove_todo(number):
     lines = lines_from_file(file_name)
     if number <= len(lines) and number > 0:
         lines.pop(number - 1)
+        if lines[-1][-1] == '\n':
+            lines[-1] = lines[-1][:-1]
         lines_to_file(file_name, lines)       
     else:
         print('Unable to remove: index is out of bound')
