@@ -1,1 +1,4 @@
-Feed the monkey
+[ ] Walk the dog
+[X] By milk
+[ ] Do homework
+[X] Feed the monkey

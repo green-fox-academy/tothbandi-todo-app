@@ -17,7 +17,7 @@ def print_todo_list():
             print('No todos for today! :)')
         else:
             for i in range(len(lines)):
-                print('{} - {}'.format(i, lines[i]), end='')
+                print('{} - {}'.format(i + 1, lines[i]), end='')
             print()
         my_file.close()
     except IOError:
@@ -27,7 +27,38 @@ def add_todo(task):
     file_name = 'todo_list.txt'
     try:
         my_file = open(file_name, 'a')
-        my_file.write(task)
+        my_file.write('\n[ ] ' + task )
         my_file.close()
     except IOError:
         print("cannot open", file_name)
+
+def lines_from_file(file_name):
+    try:
+        my_file = open(file_name, 'r')
+        lines = my_file.readlines()
+        my_file.close()
+    except IOError:
+        print("cannot open", file_name)
+    return lines
+
+def lines_to_file(file_name, lines):
+    try:
+        my_file = open(file_name, 'w')
+        for line in lines:
+            my_file.write(line)
+        my_file.close()
+    except IOError:
+        print("cannot open", file_name)
+    return lines
+
+def check_todo(check):
+    check_number = int(check)
+    file_name = 'todo_list.txt'
+    lines = lines_from_file(file_name)
+    line = lines[check_number - 1].split(' ')
+    line.pop(0)
+    line[0] = '[X]'
+    lines[check_number - 1] = ' '.join(line)
+    lines_to_file(file_name, lines)
+
+        
