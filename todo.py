@@ -17,6 +17,8 @@ class Todo(object):
                 model.add_todo(self.inputs[2])
             elif self.inputs[1] == '-c':
                 model.check_todo(self.inputs[2])            
-    
+            elif self.inputs[1] == '-r':
+                model.remove_todo(self.inputs[2]) 
+
 my_todo = Todo()
 my_todo.cl_input()

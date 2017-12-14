@@ -61,4 +61,11 @@ def check_todo(check):
     lines[check_number - 1] = ' '.join(line)
     lines_to_file(file_name, lines)
 
+def remove_todo(number):
+    number = int(number)
+    file_name = 'todo_list.txt'
+    lines = lines_from_file(file_name)
+    lines.pop(number - 1)
+    lines_to_file(file_name, lines)
+
         
