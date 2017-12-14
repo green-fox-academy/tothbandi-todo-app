@@ -1,2 +1,14 @@
+import sys
+import model
+
 class Todo(object):
-    pass
+    
+    def __init__(self):
+        self.inputs = sys.argv
+    
+    def cl_input(self):
+        if len(self.inputs) == 1:
+            model.print_usage()
+    
+my_todo = Todo()
+my_todo.cl_input()
