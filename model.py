@@ -41,7 +41,7 @@ class Model(object):
             lines = my_file.readlines()
             my_file.close()
         except IOError:
-            print("cannot open", self.file_name)
+            print('cannot open', self.file_name)
         return lines
 
     def lines_to_file(self, lines):
@@ -51,7 +51,7 @@ class Model(object):
                 my_file.write(line)
             my_file.close()
         except IOError:
-            print("cannot open", self.file_name)
+            print('cannot open', self.file_name)
         return lines
 
     def check_todo(self, check):
